@@ -15649,7 +15649,6 @@ return jQuery;
   };
 
   $(function() {
-    console.log(location.pathname);
     if (!/\/toilets\.html/.test(location.pathname)) {
       return;
     }
