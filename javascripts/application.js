@@ -15600,7 +15600,7 @@ return jQuery;
     railway = $('select[name=railway]').val();
     stop = $('select[name=stop]').val();
     destination = $('select[name=destination]').val();
-    return window.location.href = "/toilets.html?railway=" + railway + "&stop=" + stop + "&destination=" + destination;
+    return window.location.href = "toilets.html?railway=" + railway + "&stop=" + stop + "&destination=" + destination;
   });
 
   accordion = function(content) {
