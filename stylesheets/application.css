@@ -11118,13 +11118,13 @@ body {
 
 .title {
   color: #0A1B20;
+  text-align: center;
 }
 
 .social-likes {
   margin-bottom: 1em;
 }
 
-#loading {
-  width: 5%;
-  margin: 0 auto;
+#loading, #back-link, #footer {
+  text-align: center;
 }

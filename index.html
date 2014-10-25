@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Smart Toilet Finder</title>
+    <title>Metro Toilet Finder</title>
     <meta content='' name='description'>
     <meta content='hassaku' name='author'>
     <meta content='width=device-width' name='viewport'>
@@ -15,10 +15,10 @@
   </head>
   <body>
     <div class='row'>
-      <h1 class='title'>
-        Smart Toilet Finder
+      <h2 class='title'>
+        Metro Toilet Finder
         <i class='fa fa-search'></i>
-      </h1>
+      </h2>
     </div>
     <div class='row'>
       <div class='social-likes'>
@@ -33,8 +33,11 @@
     <div class='row'>
       乗車中の路線
       <select name="railway"><option value=""></option>
-      <option value="Hanzomon">Hanzomon</option>
+      <option value="Ginza">Ginza</option>
+      <option value="Hibiya">Hibiya</option>
       <option value="Tozai">Tozai</option>
+      <option value="Chiyoda">Chiyoda</option>
+      <option value="Hanzomon">Hanzomon</option>
       </select>
       次の停車駅
       <select name="stop"></select>
@@ -44,10 +47,19 @@
         トイレを探す
       </div>
     </div>
-    <div id='footer' style='text-align:center;'>
+    <div id='footer'>
       <p>Copyright(C) 2014 hassaku All Rights Reserverd.</p>
     </div>
-    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-31136981-5"]);
+      _gaq.push(["_trackPageview"]);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     <script src='javascripts/application.js' type='text/javascript'></script>
   </body>
 </html>
