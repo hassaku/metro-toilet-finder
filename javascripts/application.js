@@ -15649,7 +15649,8 @@ return jQuery;
   };
 
   $(function() {
-    if (location.pathname.trim() !== "/toilets.html") {
+    console.log(location.pathname);
+    if (!/\/toilets\.html/.test(location.pathname)) {
       return;
     }
     return $.ajax("" + server_url + "/toilets" + location.search, {
