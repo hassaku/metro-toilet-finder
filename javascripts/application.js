@@ -15588,7 +15588,7 @@ return jQuery;
 
   railway_data["Ginza"].push({
     jp: "外苑前",
-    en: "Gaienmae"
+    en: "Gaiemmae"
   });
 
   railway_data["Ginza"].push({
@@ -16139,7 +16139,7 @@ return jQuery;
       return;
     }
     station_hyphen_case = station_name.replace(/([A-Z])/g, "-$1").toLowerCase().replace(/^-/, "");
-    return "<a href=\"#\" data-reveal-id=\"myModal\">構内マップを見る</a>\n<div id=\"myModal\" class=\"reveal-modal full-screen\" data-reveal>\n  <img src=\"http://www.tokyometro.jp/station/" + station_hyphen_case + "/yardmap/images/yardmap.gif\" />\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
+    return "<a href=\"#\" data-reveal-id=\"" + station_hyphen_case + "\">構内マップを見る</a>\n<div id=\"" + station_hyphen_case + "\" class=\"reveal-modal full-screen\" data-reveal>\n  <img src=\"http://www.tokyometro.jp/station/" + station_hyphen_case + "/yardmap/images/yardmap.gif\" />\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   };
 
   $(function() {
@@ -16154,19 +16154,28 @@ return jQuery;
         return window.location.href = "/";
       },
       success: function(data, textStatus, jqXHR) {
-        var el, list, panel, panelsElements, stop, _i, _len, _ref;
+        var el, list, panel, panelsElements, s, stations_jp, stop, _i, _j, _len, _len1, _ref, _ref1;
         $('.fa-spin').remove();
+        stations_jp = {};
+        _ref = railway_data[data["railway"]];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          s = _ref[_i];
+          stations_jp[s["en"]] = s["jp"];
+        }
         panel = panelClosure();
         panelsElements = "";
-        _ref = data["stops"];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          stop = _ref[_i];
-          list = "<h4>出発時刻（降車時のロスタイム）</h4>\n";
-          list += departuresList(stop["departures"]);
+        _ref1 = data["stops"];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          stop = _ref1[_j];
+          list = "";
+          if (stop["departures"].length) {
+            list += "<h4>出発時刻（降車時のロスタイム）</h4>\n";
+            list += departuresList(stop["departures"]);
+          }
           list += "<h4>トイレ</h4>\n";
           list += toiletsList(stop["toilets"]);
           list += map(stop["name"]);
-          panelsElements += panel(stop["name"], list);
+          panelsElements += panel(stations_jp[stop["name"]], list);
         }
         el = accordion(panelsElements);
         $('#toilets').empty();
