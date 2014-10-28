@@ -15561,38 +15561,532 @@ return jQuery;
 
 }));
 (function() {
-  var accordion, departuresList, map, panelClosure, server_url, toiletsList;
+  var accordion, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
 
   $(document).foundation();
 
   server_url = 'http://metro-toilet-finder.herokuapp.com';
 
+
+  /*
+  Prepared data from YAML file.
+   */
+
+  railway_data = {};
+
+  railway_data["Ginza"] = [];
+
+  railway_data["Ginza"].push({
+    jp: "渋谷",
+    en: "Shibuya"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "表参道",
+    en: "OmoteSando"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "外苑前",
+    en: "Gaienmae"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "青山一丁目",
+    en: "AoyamaItchome"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "赤坂見附",
+    en: "AkasakaMitsuke"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "溜池山王",
+    en: "TameikeSanno"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "虎ノ門",
+    en: "Toranomon"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "新橋",
+    en: "Shimbashi"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "銀座",
+    en: "Ginza"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "京橋",
+    en: "Kyobashi"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "日本橋",
+    en: "Nihombashi"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "三越前",
+    en: "Mitsukoshimae"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "神田",
+    en: "Kanda"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "末広町",
+    en: "Suehirocho"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "上野広小路",
+    en: "UenoHirokoji"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "上野",
+    en: "Ueno"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "稲荷町",
+    en: "Inaricho"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "田原町",
+    en: "Tawaramachi"
+  });
+
+  railway_data["Ginza"].push({
+    jp: "浅草",
+    en: "Asakusa"
+  });
+
+  railway_data["Hibiya"] = [];
+
+  railway_data["Hibiya"].push({
+    jp: "中目黒",
+    en: "NakaMeguro"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "恵比寿",
+    en: "Ebisu"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "広尾",
+    en: "HiroO"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "六本木",
+    en: "Roppongi"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "神谷町",
+    en: "Kamiyacho"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "霞ヶ関",
+    en: "Kasumigaseki"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "日比谷",
+    en: "Hibiya"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "銀座",
+    en: "Ginza"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "東銀座",
+    en: "HigashiGinza"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "築地",
+    en: "Tsukiji"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "八丁堀",
+    en: "Hatchobori"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "茅場町",
+    en: "Kayabacho"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "人形町",
+    en: "Ningyocho"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "小伝馬町",
+    en: "Kodemmacho"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "秋葉原",
+    en: "Akihabara"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "仲御徒町",
+    en: "NakaOkachimachi"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "上野",
+    en: "Ueno"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "入谷町",
+    en: "Iriya"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "三ノ輪",
+    en: "Minowa"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "南千住",
+    en: "MinamiSenju"
+  });
+
+  railway_data["Hibiya"].push({
+    jp: "北千住",
+    en: "KitaSenju"
+  });
+
+  railway_data["Tozai"] = [];
+
+  railway_data["Tozai"].push({
+    jp: "中野",
+    en: "Nakano"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "落合",
+    en: "Ochiai"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "高田馬場",
+    en: "Takadanobaba"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "早稲田",
+    en: "Waseda"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "神楽坂",
+    en: "Kagurazaka"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "飯田橋",
+    en: "Iidabashi"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "九段下",
+    en: "Kudanshita"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "竹橋",
+    en: "Takebashi"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "大手町",
+    en: "Otemachi"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "日本橋",
+    en: "Nihombashi"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "茅場町",
+    en: "Kayabacho"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "門前仲町",
+    en: "MonzenNakacho"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "木場",
+    en: "Kiba"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "東陽町",
+    en: "Toyocho"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "南砂町",
+    en: "MinamiSunamachi"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "西葛西",
+    en: "NishiKasai"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "葛西",
+    en: "Kasai"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "浦安",
+    en: "Urayasu"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "南行徳",
+    en: "MinamiGyotoku"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "行徳",
+    en: "Gyotoku"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "妙典",
+    en: "Myoden"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "原木中山",
+    en: "BarakiNakayama"
+  });
+
+  railway_data["Tozai"].push({
+    jp: "西船橋",
+    en: "NishiFunabashi"
+  });
+
+  railway_data["Chiyoda"] = [];
+
+  railway_data["Chiyoda"].push({
+    jp: "代々木上原",
+    en: "YoyogiUehara"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "代々木公園",
+    en: "YoyogiKoen"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "明治神宮前",
+    en: "MeijiJingumae"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "表参道",
+    en: "OmoteSando"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "乃木坂",
+    en: "Nogizaka"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "赤坂",
+    en: "Akasaka"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "国会議事堂前",
+    en: "KokkaiGijidomae"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "霞ヶ関",
+    en: "Kasumigaseki"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "日比谷",
+    en: "Hibiya"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "西樹橋前",
+    en: "Nijubashimae"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "大手町",
+    en: "Otemachi"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "新御茶ノ水",
+    en: "ShinOchanomizu"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "湯島",
+    en: "Yushima"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "根津",
+    en: "Nezu"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "千駄木",
+    en: "Sendagi"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "西日暮里",
+    en: "NishiNippori"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "町家",
+    en: "Machiya"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "北千住",
+    en: "KitaSenju"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "綾瀬",
+    en: "Ayase"
+  });
+
+  railway_data["Chiyoda"].push({
+    jp: "北綾瀬",
+    en: "KitaAyase"
+  });
+
+  railway_data["Hanzomon"] = [];
+
+  railway_data["Hanzomon"].push({
+    jp: "渋谷",
+    en: "Shibuya"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "表参道",
+    en: "OmoteSando"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "青山一丁目",
+    en: "AoyamaItchome"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "永田町",
+    en: "Nagatacho"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "半蔵門",
+    en: "Hanzomon"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "九段下",
+    en: "Kudanshita"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "神保町",
+    en: "Jimbocho"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "大手町",
+    en: "Otemachi"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "三越前",
+    en: "Mitsukoshimae"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "水天宮前",
+    en: "Suitengumae"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "清澄白河",
+    en: "KiyosumiShirakawa"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "住吉",
+    en: "Sumiyoshi"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "錦糸町",
+    en: "Kinshicho"
+  });
+
+  railway_data["Hanzomon"].push({
+    jp: "押上",
+    en: "Oshiage"
+  });
+
   $('select[name=railway]').on('change', function() {
+    var option, stations, _i, _j, _len, _len1, _results;
     $('select[name=stop] > option').remove();
     $('select[name=destination] > option').remove();
     if (!$(this).val()) {
       return;
     }
-    return $.ajax("" + server_url + "/stations?railway=" + ($(this).val()), {
-      type: 'GET',
-      dataType: 'json',
-      error: function(jqXHR, textStatus, errorThrown) {
-        return alert("Network Error");
-      },
-      success: function(data, textStatus, jqXHR) {
-        var option, _i, _j, _len, _len1, _results;
-        for (_i = 0, _len = data.length; _i < _len; _i++) {
-          option = data[_i];
-          $('select[name=stop]').append($('<option>').html(option).val(option));
-        }
-        _results = [];
-        for (_j = 0, _len1 = data.length; _j < _len1; _j++) {
-          option = data[_j];
-          _results.push($('select[name=destination]').append($('<option>').html(option).val(option)));
-        }
-        return _results;
-      }
-    });
+    stations = railway_data[$(this).val()];
+    for (_i = 0, _len = stations.length; _i < _len; _i++) {
+      option = stations[_i];
+      $('select[name=stop]').append($('<option>').html(option["jp"]).val(option["en"]));
+    }
+    _results = [];
+    for (_j = 0, _len1 = stations.length; _j < _len1; _j++) {
+      option = stations[_j];
+      _results.push($('select[name=destination]').append($('<option>').html(option["jp"]).val(option["en"])));
+    }
+    return _results;
   });
 
   $('#search').on('click', function() {
