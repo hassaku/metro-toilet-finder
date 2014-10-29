@@ -11128,3 +11128,7 @@ body {
 #loading, #footer {
   text-align: center;
 }
+
+#search.disabled {
+  background-color: #0A1B20;
+}

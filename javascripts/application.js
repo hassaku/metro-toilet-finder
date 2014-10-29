@@ -16070,7 +16070,7 @@ return jQuery;
   });
 
   $('select[name=railway]').on('change', function() {
-    var option, stations, _i, _j, _len, _len1, _results;
+    var option, stations, _i, _j, _len, _len1;
     $('select[name=stop] > option').remove();
     $('select[name=destination] > option').remove();
     if (!$(this).val()) {
@@ -16081,12 +16081,11 @@ return jQuery;
       option = stations[_i];
       $('select[name=stop]').append($('<option>').html(option["jp"]).val(option["en"]));
     }
-    _results = [];
     for (_j = 0, _len1 = stations.length; _j < _len1; _j++) {
       option = stations[_j];
-      _results.push($('select[name=destination]').append($('<option>').html(option["jp"]).val(option["en"])));
+      $('select[name=destination]').append($('<option>').html(option["jp"]).val(option["en"]));
     }
-    return _results;
+    return $('#search').removeClass('disabled').text('トイレを探す');
   });
 
   $('#search').on('click', function() {
@@ -16094,6 +16093,9 @@ return jQuery;
     railway = $('select[name=railway]').val();
     stop = $('select[name=stop]').val();
     destination = $('select[name=destination]').val();
+    if (!(railway && stop && destination)) {
+      return;
+    }
     return window.location.href = "toilets.html?railway=" + railway + "&stop=" + stop + "&destination=" + destination;
   });
 
