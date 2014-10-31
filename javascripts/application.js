@@ -15561,7 +15561,7 @@ return jQuery;
 
 }));
 (function() {
-  var accordion, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
+  var accordion, changeTitle, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
 
   $(document).foundation();
 
@@ -16144,6 +16144,13 @@ return jQuery;
     return "<a href=\"#\" data-reveal-id=\"" + station_hyphen_case + "\">構内マップを見る</a>\n<div id=\"" + station_hyphen_case + "\" class=\"reveal-modal full-screen\" data-reveal>\n  <img src=\"http://www.tokyometro.jp/station/" + station_hyphen_case + "/yardmap/images/yardmap.gif\" />\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   };
 
+  changeTitle = function(data, stations_jp) {
+    var destination_jp, next_station_jp;
+    destination_jp = stations_jp[data["destination"]];
+    next_station_jp = stations_jp[data["stops"][0]["name"]];
+    return document.title = "" + next_station_jp + "-" + destination_jp;
+  };
+
   $(function() {
     if (!/\/toilets\.html/.test(location.pathname)) {
       return;
@@ -16164,6 +16171,7 @@ return jQuery;
           s = _ref[_i];
           stations_jp[s["en"]] = s["jp"];
         }
+        changeTitle(data, stations_jp);
         panel = panelClosure();
         panelsElements = "";
         _ref1 = data["stops"];

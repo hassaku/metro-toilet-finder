@@ -11129,6 +11129,10 @@ body {
   text-align: center;
 }
 
+#footer {
+  margin-top: 1em;
+}
+
 #search.disabled {
   background-color: #0A1B20;
 }
