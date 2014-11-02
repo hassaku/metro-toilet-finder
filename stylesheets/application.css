@@ -11136,3 +11136,12 @@ body {
 #search.disabled {
   background-color: #0A1B20;
 }
+
+.fa-map-marker.checkin {
+  color: #D45D87;
+  font-size: 1.2em;
+}
+
+span.checkin {
+  color: #E6855E;
+}

@@ -15561,11 +15561,13 @@ return jQuery;
 
 }));
 (function() {
-  var accordion, changeTitle, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
+  var METRO_API_CHECKIN_MINUTES, accordion, addCheckinEvent, changeTitle, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
 
   $(document).foundation();
 
   server_url = 'http://metro-toilet-finder.herokuapp.com';
+
+  METRO_API_CHECKIN_MINUTES = 30;
 
 
   /*
@@ -16125,14 +16127,47 @@ return jQuery;
     return "<ol>\n" + list + "\n</ol>\n";
   };
 
-  toiletsList = function(toilets) {
-    var list, toilet, _i, _len;
+  toiletsList = function(toilets, station) {
+    var checkin_cnt, list, place, toilet, _i, _len;
     list = "";
     for (_i = 0, _len = toilets.length; _i < _len; _i++) {
       toilet = toilets[_i];
-      list += "<li>" + toilet["place"] + "</li>\n";
+      place = toilet["place"];
+      list += "<li>\n";
+      list += place;
+      list += " - <i class='fa fa-map-marker'></i>";
+      list += "<span class='checkin' data-place='" + place + "' data-station='" + station + "'> チェックインする</span>";
+      checkin_cnt = toilet["checkins"].length;
+      if (checkin_cnt > 0) {
+        list += "（" + METRO_API_CHECKIN_MINUTES + "分以内に他" + checkin_cnt + "人）";
+      }
+      list += "</li>\n";
     }
     return "<ul>\n" + list + "\n</ul>\n";
+  };
+
+  addCheckinEvent = function() {
+    return $('.checkin').on('click', function() {
+      var el, place, station;
+      el = $(this);
+      station = el.data('station');
+      place = el.data('place');
+      return $.ajax("" + server_url + "/checkin", {
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "station": station,
+          "name": place
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log("Network Error");
+          return window.location.href = "/";
+        },
+        success: function(data, textStatus, jqXHR) {
+          return el.prev().addClass('checkin');
+        }
+      });
+    });
   };
 
   map = function(station_name) {
@@ -16183,14 +16218,15 @@ return jQuery;
             list += departuresList(stop["departures"]);
           }
           list += "<h4>トイレ</h4>\n";
-          list += toiletsList(stop["toilets"]);
+          list += toiletsList(stop["toilets"], stop["name"]);
           list += map(stop["name"]);
           panelsElements += panel(stations_jp[stop["name"]], list);
         }
         el = accordion(panelsElements);
         $('#toilets').empty();
         $('#toilets').append($(el));
-        return $(document).foundation();
+        $(document).foundation();
+        return addCheckinEvent();
       }
     });
   });
