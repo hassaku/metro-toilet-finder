@@ -11137,11 +11137,15 @@ body {
   background-color: #0A1B20;
 }
 
-.fa-map-marker.checkin {
+.checkin {
+  font-size: 0.7em;
+}
+
+.fa-map-marker.checkin-marker {
   color: #D45D87;
   font-size: 1.2em;
 }
 
-span.checkin {
+span.checkin-action {
   color: #E6855E;
 }

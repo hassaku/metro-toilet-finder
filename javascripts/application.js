@@ -16438,21 +16438,24 @@ return jQuery;
       place = toilet["place"];
       list += "<li>\n";
       list += place;
-      list += " - <i class='fa fa-map-marker'></i>";
-      list += "<span class='checkin' data-place='" + place + "' data-station='" + station + "'> チェックインする</span>";
+      list += "<div class='checkin'>\n";
+      list += "<i class='fa fa-map-marker'></i>";
+      list += "<span class='checkin-action' data-place='" + place + "' data-station='" + station + "'> チェックインする</span>";
       checkin_cnt = toilet["checkins"].length;
-      if (checkin_cnt > 0) {
-        list += "（" + METRO_API_CHECKIN_MINUTES + "分以内に他" + checkin_cnt + "人）";
-      }
-      list += "</li>\n";
+      list += "（" + METRO_API_CHECKIN_MINUTES + "分以内に<span class='checkin-cnt'>" + checkin_cnt + "</span>人がチェックイン）";
+      list += "</div>\n</li>\n";
     }
     return "<ul>\n" + list + "\n</ul>\n";
   };
 
   addCheckinEvent = function() {
-    return $('.checkin').on('click', function() {
-      var el, place, station;
+    return $('.checkin-action').on('click', function() {
+      var checkin_marker, el, place, station;
       el = $(this);
+      checkin_marker = el.prev();
+      if (checkin_marker.hasClass('checkin-marker')) {
+        return;
+      }
       station = el.data('station');
       place = el.data('place');
       return $.ajax("" + server_url + "/checkin", {
@@ -16467,7 +16470,11 @@ return jQuery;
           return window.location.href = root_url;
         },
         success: function(data, textStatus, jqXHR) {
-          return el.prev().addClass('checkin');
+          var checkin_cnt;
+          checkin_marker.addClass('checkin-marker');
+          el.text(' チェックインしました');
+          checkin_cnt = el.next('.checkin-cnt');
+          return checkin_cnt.text(parseInt(checkin_cnt.text(), 10) + 1);
         }
       });
     });
