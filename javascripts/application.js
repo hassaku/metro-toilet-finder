@@ -15561,11 +15561,13 @@ return jQuery;
 
 }));
 (function() {
-  var METRO_API_CHECKIN_MINUTES, accordion, addCheckinEvent, changeTitle, departuresList, map, panelClosure, railway_data, server_url, toiletsList;
+  var METRO_API_CHECKIN_MINUTES, accordion, addCheckinEvent, changeTitle, departuresList, map, panelClosure, railway_data, root_url, server_url, toiletsList;
 
   $(document).foundation();
 
   server_url = 'http://metro-toilet-finder.herokuapp.com';
+
+  root_url = 'http://hassaku.github.io/metro-toilet-finder';
 
   METRO_API_CHECKIN_MINUTES = 30;
 
@@ -16461,8 +16463,8 @@ return jQuery;
           "name": place
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          console.log("Network Error");
-          return window.location.href = "/";
+          alert("Network Error");
+          return window.location.href = root_url;
         },
         success: function(data, textStatus, jqXHR) {
           return el.prev().addClass('checkin');
@@ -16495,8 +16497,8 @@ return jQuery;
       type: 'GET',
       dataType: 'json',
       error: function(jqXHR, textStatus, errorThrown) {
-        console.log("Network Error");
-        return window.location.href = "/";
+        alert("Network Error");
+        return window.location.href = root_url;
       },
       success: function(data, textStatus, jqXHR) {
         var el, list, panel, panelsElements, s, stations_jp, stop, _i, _j, _len, _len1, _ref, _ref1;
