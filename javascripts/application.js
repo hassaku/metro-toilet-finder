@@ -16071,6 +16071,307 @@ return jQuery;
     en: "Oshiage"
   });
 
+  railway_data["Yurakucho"] = [];
+
+  railway_data["Yurakucho"].push({
+    jp: "和光市",
+    en: "Wakoshi"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "地下鉄成増",
+    en: "ChikatetsuNarimasu"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "地下鉄赤塚",
+    en: "ChikatetsuAkatsuka"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "平和台",
+    en: "Heiwadai"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "氷川台",
+    en: "Hikawadai"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "小竹向原",
+    en: "KotakeMukaihara"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "千川",
+    en: "Senkawa"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "要町",
+    en: "Kanamecho"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "池袋",
+    en: "Ikebukuro"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "東池袋",
+    en: "HigashiIkebukuro"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "護国寺",
+    en: "Gokokuji"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "江戸川橋",
+    en: "Edogawabashi"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "飯田橋",
+    en: "Iidabashi"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "市ヶ谷",
+    en: "Ichigaya"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "麹町",
+    en: "Kojimachi"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "永田町",
+    en: "Nagatacho"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "桜田門",
+    en: "Sakuradamon"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "有楽町",
+    en: "Yurakucho"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "銀座一丁目",
+    en: "GinzaItchome"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "新富町",
+    en: "Shintomicho"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "月島",
+    en: "Tsukishima"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "豊洲",
+    en: "Toyosu"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "辰巳",
+    en: "Tatsumi"
+  });
+
+  railway_data["Yurakucho"].push({
+    jp: "新木場",
+    en: "ShinKiba"
+  });
+
+  railway_data["Namboku"] = [];
+
+  railway_data["Namboku"].push({
+    jp: "目黒",
+    en: "Meguro"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "白金台",
+    en: "Shirokanedai"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "白金高輪",
+    en: "ShirokaneTakanawa"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "麻布十番",
+    en: "AzabuJuban"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "六本木一丁目",
+    en: "RoppongiItchome"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "溜池山王",
+    en: "TameikeSanno"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "永田町",
+    en: "Nagatacho"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "四谷",
+    en: "Yotsuya"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "市ヶ谷",
+    en: "Ichigaya"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "飯田橋",
+    en: "Iidabashi"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "後楽園",
+    en: "Korakuen"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "東大前",
+    en: "Todaimae"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "本駒込",
+    en: "HonKomagome"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "駒込",
+    en: "Komagome"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "西ヶ原",
+    en: "Nishigahara"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "王子",
+    en: "Oji"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "王子神谷",
+    en: "OjiKamiya"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "志茂",
+    en: "Shimo"
+  });
+
+  railway_data["Namboku"].push({
+    jp: "赤羽岩淵",
+    en: "AkabaneIwabuchi"
+  });
+
+  railway_data["Fukutoshin"] = [];
+
+  railway_data["Fukutoshin"].push({
+    jp: "和光市",
+    en: "Wakoshi"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "地下鉄成増",
+    en: "ChikatetsuNarimasu"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "地下鉄赤須賀",
+    en: "ChikatetsuAkatsuka"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "平和台",
+    en: "Heiwadai"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "氷川台",
+    en: "Hikawadai"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "小竹向原",
+    en: "KotakeMukaihara"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "千川",
+    en: "Senkawa"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "要町",
+    en: "Kanamecho"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "池袋",
+    en: "Ikebukuro"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "雑司が谷",
+    en: "Zoshigaya"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "西早稲田",
+    en: "NishiWaseda"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "東新宿",
+    en: "HigashiShinjuku"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "新宿三丁目",
+    en: "ShinjukuSanchome"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "北参道",
+    en: "KitaSando"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "明治神宮前",
+    en: "MeijiJingumae"
+  });
+
+  railway_data["Fukutoshin"].push({
+    jp: "渋谷",
+    en: "Shibuya"
+  });
+
   $('select[name=railway]').on('change', function() {
     var option, stations, _i, _j, _len, _len1;
     $('select[name=stop] > option').remove();
