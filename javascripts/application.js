@@ -16493,7 +16493,7 @@ return jQuery;
   };
 
   addRailwayIcon = function(data) {
-    return $('h2.title').append("<img src='/images/" + data["railway"] + ".jpg' class='railway-icon'/>");
+    return $('h2.title').append("<img src='images/" + data["railway"] + ".jpg' class='railway-icon'/>");
   };
 
   changeTitle = function(data, stations_jp) {
