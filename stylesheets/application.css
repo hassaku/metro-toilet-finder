@@ -11121,11 +11121,11 @@ body {
   text-align: center;
 }
 
-.social-likes {
+.social-likes, .railway-icons {
   margin-bottom: 1em;
 }
 
-#loading, #footer, #qrcode {
+#loading, #footer, #qrcode, .railway-icons, .form-title, .social-buttons {
   text-align: center;
 }
 
@@ -11148,4 +11148,13 @@ body {
 
 span.checkin-action {
   color: #E6855E;
+}
+
+img.railway-icon {
+  width: 11.11111%;
+  border-radius: 50%;
+}
+
+img.railway-icon.selected {
+  border-radius: 20%;
 }

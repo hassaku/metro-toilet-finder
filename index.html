@@ -22,7 +22,7 @@
       </h2>
       </a>
     </div>
-    <div class='row'>
+    <div class='row social-buttons'>
       <div class='social-likes'>
         <div class='facebook'>
           Facebook
@@ -33,20 +33,26 @@
       </div>
     </div>
     <div class='row'>
-      乗車中の路線
-      <select name="railway"><option value=""></option>
-      <option value="Ginza">銀座線</option>
-      <option value="Hibiya">日比谷線</option>
-      <option value="Tozai">東西線</option>
-      <option value="Chiyoda">千代田線</option>
-      <option value="Hanzomon">半蔵門線</option>
-      <option value="Yurakucho">有楽町線</option>
-      <option value="Namboku">南北線</option>
-      <option value="Fukutoshin">副都心線</option>
-      </select>
-      次の停車駅
+      <h4 class='form-title'>
+        乗車中の路線
+      </h4>
+      <div class='railway-icons'>
+        <img class="railway-icon" data-railway="Ginza" src="images/Ginza.jpg" />
+        <img class="railway-icon" data-railway="Hibiya" src="images/Hibiya.jpg" />
+        <img class="railway-icon" data-railway="Tozai" src="images/Tozai.jpg" />
+        <img class="railway-icon" data-railway="Chiyoda" src="images/Chiyoda.jpg" />
+        <img class="railway-icon" data-railway="Hanzomon" src="images/Hanzomon.jpg" />
+        <img class="railway-icon" data-railway="Yurakucho" src="images/Yurakucho.jpg" />
+        <img class="railway-icon" data-railway="Namboku" src="images/Namboku.jpg" />
+        <img class="railway-icon" data-railway="Fukutoshin" src="images/Fukutoshin.jpg" />
+      </div>
+      <h4 class='form-title'>
+        次の停車駅
+      </h4>
       <select name="stop"></select>
-      目的地
+      <h4 class='form-title'>
+        目的地
+      </h4>
       <select name="destination"></select>
       <div class='button expand disabled' id='search'>
         各項目を選択してください

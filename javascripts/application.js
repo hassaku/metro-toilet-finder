@@ -15561,7 +15561,7 @@ return jQuery;
 
 }));
 (function() {
-  var METRO_API_CHECKIN_MINUTES, accordion, addCheckinEvent, changeTitle, departuresList, map, panelClosure, railway_data, root_url, server_url, toiletsList;
+  var METRO_API_CHECKIN_MINUTES, accordion, addCheckinEvent, addRailwayIcon, changeTitle, departuresList, map, panelClosure, railway_data, root_url, server_url, toiletsList;
 
   $(document).foundation();
 
@@ -16374,14 +16374,17 @@ return jQuery;
     en: "Shibuya"
   });
 
-  $('select[name=railway]').on('change', function() {
-    var option, stations, _i, _j, _len, _len1;
+  $('.railway-icon').on('click', function() {
+    var option, railway, stations, _i, _j, _len, _len1;
     $('select[name=stop] > option').remove();
     $('select[name=destination] > option').remove();
-    if (!$(this).val()) {
+    $('.railway-icon.selected').removeClass('selected');
+    $(this).addClass('selected');
+    railway = $(this).data('railway');
+    if (!railway) {
       return;
     }
-    stations = railway_data[$(this).val()];
+    stations = railway_data[railway];
     for (_i = 0, _len = stations.length; _i < _len; _i++) {
       option = stations[_i];
       $('select[name=stop]').append($('<option>').html(option["jp"]).val(option["en"]));
@@ -16395,7 +16398,7 @@ return jQuery;
 
   $('#search').on('click', function() {
     var destination, railway, stop;
-    railway = $('select[name=railway]').val();
+    railway = $('.railway-icon.selected').data('railway');
     stop = $('select[name=stop]').val();
     destination = $('select[name=destination]').val();
     if (!(railway && stop && destination)) {
@@ -16489,6 +16492,10 @@ return jQuery;
     return "<a href=\"#\" data-reveal-id=\"" + station_hyphen_case + "\">構内マップを見る</a>\n<div id=\"" + station_hyphen_case + "\" class=\"reveal-modal full-screen\" data-reveal>\n  <img src=\"http://www.tokyometro.jp/station/" + station_hyphen_case + "/yardmap/images/yardmap.gif\" />\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   };
 
+  addRailwayIcon = function(data) {
+    return $('h2.title').append("<img src='/images/" + data["railway"] + ".jpg' class='railway-icon'/>");
+  };
+
   changeTitle = function(data, stations_jp) {
     var destination_jp, next_station_jp;
     destination_jp = stations_jp[data["destination"]];
@@ -16516,6 +16523,7 @@ return jQuery;
           s = _ref[_i];
           stations_jp[s["en"]] = s["jp"];
         }
+        addRailwayIcon(data);
         changeTitle(data, stations_jp);
         panel = panelClosure();
         panelsElements = "";
